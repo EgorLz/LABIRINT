@@ -41,27 +41,13 @@ def draw():
             pygame.draw.line(screen, "black", [((end % point_x) - 1) * 150, 150 * (end // point_y)], [(end % point_x) * 150, 150 * (end // point_y)], 8)
 draw()
 
-#def way(x, y, x_end, y_end, graf):
-    #short = []
-    #counted = []
-    #min = []
-    #start_point = (x + 1) + (y * 3)
-    #now = start_point
-    #short.append(start_point)
-    #counted.append(start_point)
-    #end_point = (x_end + 1) + (y_end * 3)
-    #if end_point in graf[start_point - 1]:
-        #counted.append(end_point):
-        #return counted
-    #else:
-        #for i in range(len(graf[start_point - 1])):
 
-def dfs_paths(graph, x_end, y_end):
-    way = [(x_end, [x_end])]  # (vertex, path)
+def dfs_paths(graph, start, end):
+    way = [(start, [start])]  # (vertex, path)
     while way:
         (vertex, path) = way.pop()
         for next in set(graph[vertex]) - set(path):
-            if next == y_end:
+            if next == end:
                 yield path + [next]
             else:
                 way.append((next, path + [next]))
